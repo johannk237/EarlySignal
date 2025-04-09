@@ -12,6 +12,10 @@ import SignupPage from "./pages/SignupPage";
 import VCDashboard from "./pages/VCDashboard";
 import StartupProfile from "./pages/StartupProfile";
 import AIFeedbackPage from "./pages/AIFeedbackPage";
+import FounderDashboard from "./pages/FounderDashboard";
+import FounderProfile from "./pages/FounderProfile";
+import Favorites from "./pages/Favorites";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,8 +31,12 @@ const App = () => (
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/vc-dashboard" element={<VCDashboard />} />
+          <Route path="/founder-dashboard" element={<FounderDashboard />} />
           <Route path="/startup/:id" element={<StartupProfile />} />
           <Route path="/ai-feedback" element={<AIFeedbackPage />} />
+          <Route path="/profile" element={<FounderProfile />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
