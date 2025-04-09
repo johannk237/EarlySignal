@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -30,6 +29,7 @@ interface StartupCardProps {
   teamSize: number;
   shortDescription: string;
   logoUrl?: string;
+  isFavorite?: boolean;
 }
 
 export function StartupCard({ 
@@ -41,11 +41,11 @@ export function StartupCard({
   aiScore, 
   teamSize, 
   shortDescription,
-  logoUrl 
+  logoUrl,
+  isFavorite: initialIsFavorite = false
 }: StartupCardProps) {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(initialIsFavorite);
 
-  // Helper to get the right color for the stage badge
   const getStageBadgeColor = (stage: string) => {
     switch (stage) {
       case "Idea": return "bg-blue-100 hover:bg-blue-100 text-blue-800";
@@ -56,7 +56,6 @@ export function StartupCard({
     }
   };
 
-  // Helper to get AI score color
   const getAiScoreColor = (score: number) => {
     if (score >= 80) return "text-green-600";
     if (score >= 60) return "text-amber-600";
