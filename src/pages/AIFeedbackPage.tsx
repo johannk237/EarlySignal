@@ -57,7 +57,7 @@ const AIFeedbackPage = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-0">
-                <div className="h-[75vh]">
+                <div className="h-[100vh]">
                   <AIFeedbackChat onComplete={handleChatComplete} />
                 </div>
               </CardContent>
@@ -65,7 +65,7 @@ const AIFeedbackPage = () => {
           </div>
           
           <div>
-            <ScrollArea className="h-[75vh] pr-4">
+            <ScrollArea className="h-[100vh] pr-4 shadow-lg">
               <Card className="border-0 shadow-lg rounded-xl mb-6">
                 <CardHeader className="pb-2 border-b bg-gradient-to-r from-gray-50 to-gray-100">
                   <CardTitle className="text-lg">How This Works</CardTitle>

@@ -126,7 +126,7 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
     <div className="flex flex-col h-full">
       <AIChatHeader />
       
-      <ScrollArea className="flex-1 p-6 bg-gray-50">
+      <ScrollArea className="flex-1 p-6 bg-gray-200">
         <div className="space-y-6">
           {messages.map((message) => (
             <AIMessage key={message.id} message={message} />

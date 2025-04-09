@@ -128,8 +128,8 @@ const StartupProfile = () => {
                   </span>
                 </div>
                 <div className="ml-4 pb-4">
-                  <h1 className="text-2xl font-bold text-white">{startup.name}</h1>
-                  <p className="text-brand-100">{startup.tagline}</p>
+                  <h1 className="text-3xl font-bold text-white">{startup.name}</h1>
+                  <p className="text-brand-500">{startup.tagline}</p>
                 </div>
               </div>
             </div>

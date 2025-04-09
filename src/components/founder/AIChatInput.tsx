@@ -45,7 +45,7 @@ export function AIChatInput({ onSendMessage, isLoading }: AIChatInputProps) {
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder="Type your message..."
-        className="flex-1 min-h-[80px] resize-none bg-gray-50 rounded-lg border-gray-200 focus:border-brand-400 focus:ring focus:ring-brand-100"
+        className="flex-1 min-h-[80px] resize-none bg-gray-100 rounded-lg border-gray-200 focus:border-brand-400 focus:ring focus:ring-brand-100"
         disabled={isLoading}
       />
       <div className="ml-3 flex flex-col space-y-2">
