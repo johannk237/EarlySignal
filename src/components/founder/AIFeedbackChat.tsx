@@ -1,27 +1,11 @@
 
 import React, { useState, useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { 
-  Bot, 
-  ChevronRight, 
-  Info, 
-  Mic, 
-  MicOff, 
-  RefreshCw, 
-  Send, 
-  User
-} from "lucide-react";
-
-type MessageType = {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-  timestamp: Date;
-};
+import { AIMessage, MessageType } from "./AIMessage";
+import { AITypingIndicator } from "./AITypingIndicator";
+import { AIChatInput } from "./AIChatInput";
+import { AISuggestedResponses } from "./AISuggestedResponses";
+import { AIChatHeader } from "./AIChatHeader";
 
 interface AIFeedbackChatProps {
   onComplete?: (conversation: MessageType[]) => void;
@@ -37,10 +21,7 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
     },
   ]);
   
-  const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isRecording, setIsRecording] = useState(false);
-  
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
   const scrollToBottom = () => {
@@ -51,9 +32,7 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
     scrollToBottom();
   }, [messages]);
   
-  const handleSendMessage = () => {
-    if (!input.trim()) return;
-    
+  const handleSendMessage = (input: string) => {
     const userMessage = {
       id: Date.now().toString(),
       role: "user" as const,
@@ -62,7 +41,6 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
     };
     
     setMessages((prev) => [...prev, userMessage]);
-    setInput("");
     setIsLoading(true);
     
     // Simulate AI response
@@ -140,218 +118,36 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
     }, 1500);
   };
   
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
-    }
-  };
-  
-  const toggleRecording = () => {
-    setIsRecording(!isRecording);
-    
-    // Simulate speech recognition
-    if (!isRecording) {
-      setTimeout(() => {
-        setInput("Our startup is developing an AI-powered financial advisor for millennials...");
-        setIsRecording(false);
-      }, 3000);
-    }
+  const handleSuggestedResponse = (suggestion: string) => {
+    handleSendMessage(suggestion);
   };
   
   return (
     <div className="flex flex-col h-full">
-      <div className="p-4 border-b bg-white flex items-center justify-between">
-        <div className="flex items-center">
-          <Avatar className="h-9 w-9 mr-2 bg-brand-100">
-            <AvatarFallback className="bg-brand-100 text-brand-700">
-              <Bot className="h-5 w-5" />
-            </AvatarFallback>
-          </Avatar>
-          <div>
-            <h3 className="font-medium">Investor AI Assistant</h3>
-            <p className="text-xs text-gray-500">Powered by FounderMatch</p>
-          </div>
-        </div>
-        <div className="flex items-center">
-          <Badge variant="outline" className="mr-2 bg-green-50 text-green-700 border-green-200">
-            <div className="w-2 h-2 rounded-full bg-green-500 mr-1 animate-pulse"></div>
-            <span className="text-xs">Live</span>
-          </Badge>
-          <Button variant="outline" size="sm" className="text-xs">
-            <Info className="h-3 w-3 mr-1" />
-            Help
-          </Button>
-        </div>
-      </div>
+      <AIChatHeader />
       
       <ScrollArea className="flex-1 p-6 bg-gray-50">
         <div className="space-y-6">
           {messages.map((message) => (
-            <div
-              key={message.id}
-              className={`flex ${
-                message.role === "user" ? "justify-end" : "justify-start"
-              }`}
-            >
-              <div
-                className={`max-w-[80%] rounded-lg p-4 shadow-sm ${
-                  message.role === "user"
-                    ? "bg-brand-700 text-white"
-                    : "bg-white"
-                }`}
-              >
-                <div className="flex items-start">
-                  {message.role === "assistant" && (
-                    <Avatar className="h-8 w-8 mr-3 flex-shrink-0">
-                      <AvatarFallback className="bg-brand-100 text-brand-700">
-                        <Bot className="h-4 w-4" />
-                      </AvatarFallback>
-                    </Avatar>
-                  )}
-                  <div className="flex-1">
-                    <div
-                      className={`text-sm ${
-                        message.role === "user" ? "text-white" : "text-gray-800"
-                      }`}
-                    >
-                      {message.content.split("\n").map((line, i) => (
-                        <React.Fragment key={i}>
-                          {line}
-                          {i < message.content.split("\n").length - 1 && <br />}
-                        </React.Fragment>
-                      ))}
-                    </div>
-                    <div
-                      className={`text-xs mt-2 ${
-                        message.role === "user" ? "text-brand-100" : "text-gray-500"
-                      }`}
-                    >
-                      {message.timestamp.toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </div>
-                  </div>
-                  {message.role === "user" && (
-                    <Avatar className="h-8 w-8 ml-3 flex-shrink-0">
-                      <AvatarFallback className="bg-gray-200 text-gray-700">
-                        <User className="h-4 w-4" />
-                      </AvatarFallback>
-                    </Avatar>
-                  )}
-                </div>
-              </div>
-            </div>
+            <AIMessage key={message.id} message={message} />
           ))}
           
-          {isLoading && (
-            <div className="flex justify-start">
-              <div className="bg-white shadow-sm rounded-lg p-4 max-w-[80%]">
-                <div className="flex items-center">
-                  <Avatar className="h-8 w-8 mr-3">
-                    <AvatarFallback className="bg-brand-100 text-brand-700">
-                      <Bot className="h-4 w-4" />
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex space-x-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-brand-300 animate-bounce" style={{ animationDelay: "0ms" }}></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-brand-400 animate-bounce" style={{ animationDelay: "200ms" }}></div>
-                    <div className="w-2.5 h-2.5 rounded-full bg-brand-500 animate-bounce" style={{ animationDelay: "400ms" }}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          {isLoading && <AITypingIndicator />}
           
           <div ref={messagesEndRef} />
         </div>
       </ScrollArea>
       
       <div className="p-4 border-t bg-white">
-        <div className="flex items-center">
-          <Textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Type your message..."
-            className="flex-1 min-h-[80px] resize-none bg-gray-50 rounded-lg border-gray-200 focus:border-brand-400 focus:ring focus:ring-brand-100"
-            disabled={isLoading}
-          />
-          <div className="ml-3 flex flex-col space-y-2">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={toggleRecording}
-              className={`rounded-full h-10 w-10 ${isRecording ? "bg-red-50 text-red-500 border-red-200" : "bg-gray-50"}`}
-              disabled={isLoading}
-            >
-              {isRecording ? (
-                <MicOff className="h-5 w-5" />
-              ) : (
-                <Mic className="h-5 w-5" />
-              )}
-            </Button>
-            <Button
-              onClick={handleSendMessage}
-              disabled={!input.trim() || isLoading}
-              className="bg-brand-700 hover:bg-brand-800 rounded-full h-10 w-10"
-              size="icon"
-            >
-              {isLoading ? (
-                <RefreshCw className="h-5 w-5 animate-spin" />
-              ) : (
-                <Send className="h-5 w-5" />
-              )}
-            </Button>
-          </div>
-        </div>
+        <AIChatInput 
+          onSendMessage={handleSendMessage}
+          isLoading={isLoading}
+        />
         
-        {messages.length <= 12 && (
-          <div className="mt-4">
-            <p className="text-xs text-gray-500 mb-2">Suggested responses:</p>
-            <div className="flex flex-wrap gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-xs bg-gray-50 hover:bg-gray-100"
-                onClick={() => {
-                  if (messages.length === 1) {
-                    setInput("We're building an AI-driven platform that matches VC investors with promising startups more efficiently through data-driven analysis.");
-                  } else if (messages.length === 3) {
-                    setInput("Our platform uses AI to analyze startup pitches and provide real-time feedback, while generating detailed profiles for investors to review.");
-                  }
-                }}
-              >
-                <ChevronRight className="h-3 w-3 mr-1" />
-                {messages.length === 1 
-                  ? "We're building an AI platform..." 
-                  : messages.length === 3 
-                  ? "Our solution uses AI to..." 
-                  : "Add suggested response"}
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-xs bg-gray-50 hover:bg-gray-100"
-                onClick={() => {
-                  if (messages.length === 1) {
-                    setInput("Our startup helps early-stage founders prepare better pitches by simulating investor conversations and providing feedback.");
-                  } else if (messages.length === 3) {
-                    setInput("We've developed a conversational AI that asks founders questions just like real VCs would, helping them refine their pitch.");
-                  }
-                }}
-              >
-                <ChevronRight className="h-3 w-3 mr-1" />
-                {messages.length === 1 
-                  ? "Our startup helps founders..." 
-                  : messages.length === 3 
-                  ? "We've developed a system..." 
-                  : "Add another response"}
-              </Button>
-            </div>
-          </div>
-        )}
+        <AISuggestedResponses 
+          messageCount={messages.length}
+          onSelectSuggestion={handleSuggestedResponse}
+        />
       </div>
     </div>
   );
