@@ -1,11 +1,11 @@
+
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { 
-  ArrowRight, 
   Bot, 
   ChevronRight, 
   Info, 
@@ -160,12 +160,12 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
   };
   
   return (
-    <div className="flex flex-col h-full bg-gray-50 rounded-lg border">
+    <div className="flex flex-col h-full">
       <div className="p-4 border-b bg-white flex items-center justify-between">
         <div className="flex items-center">
-          <Avatar className="h-8 w-8 mr-2 bg-brand-100">
+          <Avatar className="h-9 w-9 mr-2 bg-brand-100">
             <AvatarFallback className="bg-brand-100 text-brand-700">
-              <Bot className="h-4 w-4" />
+              <Bot className="h-5 w-5" />
             </AvatarFallback>
           </Avatar>
           <div>
@@ -174,8 +174,8 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
           </div>
         </div>
         <div className="flex items-center">
-          <Badge variant="outline" className="mr-2">
-            <div className="w-2 h-2 rounded-full bg-green-500 mr-1"></div>
+          <Badge variant="outline" className="mr-2 bg-green-50 text-green-700 border-green-200">
+            <div className="w-2 h-2 rounded-full bg-green-500 mr-1 animate-pulse"></div>
             <span className="text-xs">Live</span>
           </Badge>
           <Button variant="outline" size="sm" className="text-xs">
@@ -185,86 +185,88 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
         </div>
       </div>
       
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map((message) => (
-          <div
-            key={message.id}
-            className={`flex ${
-              message.role === "user" ? "justify-end" : "justify-start"
-            }`}
-          >
+      <ScrollArea className="flex-1 p-6 bg-gray-50">
+        <div className="space-y-6">
+          {messages.map((message) => (
             <div
-              className={`max-w-[80%] rounded-lg p-3 ${
-                message.role === "user"
-                  ? "bg-brand-700 text-white"
-                  : "bg-white border shadow-sm"
+              key={message.id}
+              className={`flex ${
+                message.role === "user" ? "justify-end" : "justify-start"
               }`}
             >
-              <div className="flex items-start">
-                {message.role === "assistant" && (
-                  <Avatar className="h-6 w-6 mr-2 flex-shrink-0">
+              <div
+                className={`max-w-[80%] rounded-lg p-4 shadow-sm ${
+                  message.role === "user"
+                    ? "bg-brand-700 text-white"
+                    : "bg-white"
+                }`}
+              >
+                <div className="flex items-start">
+                  {message.role === "assistant" && (
+                    <Avatar className="h-8 w-8 mr-3 flex-shrink-0">
+                      <AvatarFallback className="bg-brand-100 text-brand-700">
+                        <Bot className="h-4 w-4" />
+                      </AvatarFallback>
+                    </Avatar>
+                  )}
+                  <div className="flex-1">
+                    <div
+                      className={`text-sm ${
+                        message.role === "user" ? "text-white" : "text-gray-800"
+                      }`}
+                    >
+                      {message.content.split("\n").map((line, i) => (
+                        <React.Fragment key={i}>
+                          {line}
+                          {i < message.content.split("\n").length - 1 && <br />}
+                        </React.Fragment>
+                      ))}
+                    </div>
+                    <div
+                      className={`text-xs mt-2 ${
+                        message.role === "user" ? "text-brand-100" : "text-gray-500"
+                      }`}
+                    >
+                      {message.timestamp.toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </div>
+                  </div>
+                  {message.role === "user" && (
+                    <Avatar className="h-8 w-8 ml-3 flex-shrink-0">
+                      <AvatarFallback className="bg-gray-200 text-gray-700">
+                        <User className="h-4 w-4" />
+                      </AvatarFallback>
+                    </Avatar>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+          
+          {isLoading && (
+            <div className="flex justify-start">
+              <div className="bg-white shadow-sm rounded-lg p-4 max-w-[80%]">
+                <div className="flex items-center">
+                  <Avatar className="h-8 w-8 mr-3">
                     <AvatarFallback className="bg-brand-100 text-brand-700">
-                      <Bot className="h-3 w-3" />
+                      <Bot className="h-4 w-4" />
                     </AvatarFallback>
                   </Avatar>
-                )}
-                <div>
-                  <div
-                    className={`text-sm ${
-                      message.role === "user" ? "text-white" : "text-gray-800"
-                    }`}
-                  >
-                    {message.content.split("\n").map((line, i) => (
-                      <React.Fragment key={i}>
-                        {line}
-                        {i < message.content.split("\n").length - 1 && <br />}
-                      </React.Fragment>
-                    ))}
+                  <div className="flex space-x-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-brand-300 animate-bounce" style={{ animationDelay: "0ms" }}></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-brand-400 animate-bounce" style={{ animationDelay: "200ms" }}></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-brand-500 animate-bounce" style={{ animationDelay: "400ms" }}></div>
                   </div>
-                  <div
-                    className={`text-xs mt-1 ${
-                      message.role === "user" ? "text-brand-100" : "text-gray-500"
-                    }`}
-                  >
-                    {message.timestamp.toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </div>
-                </div>
-                {message.role === "user" && (
-                  <Avatar className="h-6 w-6 ml-2 flex-shrink-0">
-                    <AvatarFallback className="bg-gray-100 text-gray-700">
-                      <User className="h-3 w-3" />
-                    </AvatarFallback>
-                  </Avatar>
-                )}
-              </div>
-            </div>
-          </div>
-        ))}
-        
-        {isLoading && (
-          <div className="flex justify-start">
-            <div className="bg-white border shadow-sm rounded-lg p-3 max-w-[80%]">
-              <div className="flex items-center">
-                <Avatar className="h-6 w-6 mr-2">
-                  <AvatarFallback className="bg-brand-100 text-brand-700">
-                    <Bot className="h-3 w-3" />
-                  </AvatarFallback>
-                </Avatar>
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 rounded-full bg-gray-300 animate-bounce" style={{ animationDelay: "0ms" }}></div>
-                  <div className="w-2 h-2 rounded-full bg-gray-300 animate-bounce" style={{ animationDelay: "200ms" }}></div>
-                  <div className="w-2 h-2 rounded-full bg-gray-300 animate-bounce" style={{ animationDelay: "400ms" }}></div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-        
-        <div ref={messagesEndRef} />
-      </div>
+          )}
+          
+          <div ref={messagesEndRef} />
+        </div>
+      </ScrollArea>
       
       <div className="p-4 border-t bg-white">
         <div className="flex items-center">
@@ -273,15 +275,15 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Type your message..."
-            className="flex-1 min-h-[60px] resize-none"
+            className="flex-1 min-h-[80px] resize-none bg-gray-50 rounded-lg border-gray-200 focus:border-brand-400 focus:ring focus:ring-brand-100"
             disabled={isLoading}
           />
-          <div className="ml-3 flex items-center space-x-2">
+          <div className="ml-3 flex flex-col space-y-2">
             <Button
               variant="outline"
               size="icon"
               onClick={toggleRecording}
-              className={isRecording ? "text-red-500" : ""}
+              className={`rounded-full h-10 w-10 ${isRecording ? "bg-red-50 text-red-500 border-red-200" : "bg-gray-50"}`}
               disabled={isLoading}
             >
               {isRecording ? (
@@ -293,7 +295,8 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
             <Button
               onClick={handleSendMessage}
               disabled={!input.trim() || isLoading}
-              className="bg-brand-700 hover:bg-brand-800"
+              className="bg-brand-700 hover:bg-brand-800 rounded-full h-10 w-10"
+              size="icon"
             >
               {isLoading ? (
                 <RefreshCw className="h-5 w-5 animate-spin" />
@@ -305,13 +308,13 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
         </div>
         
         {messages.length <= 12 && (
-          <div className="mt-3">
+          <div className="mt-4">
             <p className="text-xs text-gray-500 mb-2">Suggested responses:</p>
             <div className="flex flex-wrap gap-2">
               <Button
                 variant="outline"
                 size="sm"
-                className="text-xs"
+                className="text-xs bg-gray-50 hover:bg-gray-100"
                 onClick={() => {
                   if (messages.length === 1) {
                     setInput("We're building an AI-driven platform that matches VC investors with promising startups more efficiently through data-driven analysis.");
@@ -330,7 +333,7 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
               <Button
                 variant="outline"
                 size="sm"
-                className="text-xs"
+                className="text-xs bg-gray-50 hover:bg-gray-100"
                 onClick={() => {
                   if (messages.length === 1) {
                     setInput("Our startup helps early-stage founders prepare better pitches by simulating investor conversations and providing feedback.");
