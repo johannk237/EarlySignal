@@ -13,9 +13,7 @@ export function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
     <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4 py-12">
       <div className="w-full max-w-md space-y-8 animate-fade-in">
         <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-            Founder<span className="text-brand-700">Match</span>
-          </h1>
+        <img src="/public/logo.png" alt="Logo" className="h-20 w-50 mr-2" />
           <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">
             {title}
           </h2>

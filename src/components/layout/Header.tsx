@@ -32,9 +32,7 @@ export function Header({ userType }: HeaderProps) {
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center">
             <Link to={userType === "vc" ? "/vc-dashboard" : "/founder-dashboard"} className="flex items-center">
-              <span className="text-xl font-bold text-gray-900">
-                Founder<span className="text-brand-700">Match</span>
-              </span>
+              <img src="/public/logo.png" alt="Logo" className="h-10 w-50 mr-2" />
             </Link>
           </div>
 
@@ -42,20 +40,20 @@ export function Header({ userType }: HeaderProps) {
           <nav className="hidden md:flex items-center space-x-4">
             {userType === "vc" && (
               <>
-                <Link 
-                  to="/vc-dashboard" 
+                <Link
+                  to="/vc-dashboard"
                   className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Dashboard
                 </Link>
-                <Link 
-                  to="/favorites" 
+                <Link
+                  to="/favorites"
                   className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Favorites
                 </Link>
-                <Link 
-                  to="/settings" 
+                <Link
+                  to="/settings"
                   className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Settings
@@ -65,20 +63,20 @@ export function Header({ userType }: HeaderProps) {
 
             {userType === "founder" && (
               <>
-                <Link 
-                  to="/founder-dashboard" 
+                <Link
+                  to="/founder-dashboard"
                   className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Dashboard
                 </Link>
-                <Link 
-                  to="/profile" 
+                <Link
+                  to="/profile"
                   className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   My Profile
                 </Link>
-                <Link 
-                  to="/ai-feedback" 
+                <Link
+                  to="/ai-feedback"
                   className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   AI Feedback
@@ -91,7 +89,7 @@ export function Header({ userType }: HeaderProps) {
             <Button variant="ghost" size="icon" aria-label="Notifications">
               <Bell className="h-5 w-5" />
             </Button>
-            
+
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
@@ -118,8 +116,8 @@ export function Header({ userType }: HeaderProps) {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               size="icon"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Menu"
@@ -136,22 +134,22 @@ export function Header({ userType }: HeaderProps) {
           <div className="space-y-1 px-4">
             {userType === "vc" && (
               <>
-                <Link 
-                  to="/vc-dashboard" 
+                <Link
+                  to="/vc-dashboard"
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Dashboard
                 </Link>
-                <Link 
-                  to="/favorites" 
+                <Link
+                  to="/favorites"
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Favorites
                 </Link>
-                <Link 
-                  to="/settings" 
+                <Link
+                  to="/settings"
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -162,22 +160,22 @@ export function Header({ userType }: HeaderProps) {
 
             {userType === "founder" && (
               <>
-                <Link 
-                  to="/founder-dashboard" 
+                <Link
+                  to="/founder-dashboard"
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Dashboard
                 </Link>
-                <Link 
-                  to="/profile" 
+                <Link
+                  to="/profile"
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   My Profile
                 </Link>
-                <Link 
-                  to="/ai-feedback" 
+                <Link
+                  to="/ai-feedback"
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -185,7 +183,7 @@ export function Header({ userType }: HeaderProps) {
                 </Link>
               </>
             )}
-            
+
             <div className="pt-4 pb-3 border-t border-gray-200">
               <div className="flex items-center px-3">
                 <div className="flex-shrink-0">

@@ -27,7 +27,7 @@ const FounderDashboard = () => {
           <div className="lg:col-span-2">
             <Card className="border-0 shadow-md mb-6">
               <CardHeader className="pb-2">
-                <CardTitle className="text-xl">Welcome to FounderMatch</CardTitle>
+                <CardTitle className="text-xl">Welcome to EarlySignal</CardTitle>
                 <CardDescription>
                   Complete your profile to get discovered by investors
                 </CardDescription>

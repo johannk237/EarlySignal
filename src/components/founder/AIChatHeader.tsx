@@ -16,7 +16,7 @@ export function AIChatHeader() {
         </Avatar>
         <div>
           <h3 className="font-medium">Investor AI Assistant</h3>
-          <p className="text-xs text-gray-500">Powered by FounderMatch</p>
+          <p className="text-xs text-gray-500">Powered by EarlySignal</p>
         </div>
       </div>
       <div className="flex items-center">

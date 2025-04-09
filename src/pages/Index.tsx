@@ -19,11 +19,9 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center">
-              <span className="text-xl font-bold text-gray-900">
-                Founder<span className="text-brand-700">Match</span>
-              </span>
+              <img src="/public/logo.png" alt="Logo" className="h-10 w-50 mr-2" />
             </div>
-            
+
             <nav className="hidden md:flex items-center space-x-4">
               <a href="#features" className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium">
                 Features
@@ -35,7 +33,7 @@ const Index = () => {
                 Testimonials
               </a>
             </nav>
-            
+
             <div className="flex items-center space-x-3">
               <Link to="/login">
                 <Button variant="outline">Sign in</Button>
@@ -47,7 +45,7 @@ const Index = () => {
           </div>
         </div>
       </header>
-      
+
       {/* Hero section */}
       <section className="py-20 bg-gradient-to-r from-gray-50 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,7 +73,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Features section */}
       <section id="features" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,7 +83,7 @@ const Index = () => {
               Our platform combines AI-driven insights with a streamlined matching process
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-gray-50 p-8 rounded-xl">
               <div className="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-5">
@@ -96,7 +94,7 @@ const Index = () => {
                 Founders receive real-time, actionable feedback on their pitches from our AI, simulating real investor interactions.
               </p>
             </div>
-            
+
             <div className="bg-gray-50 p-8 rounded-xl">
               <div className="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-5">
                 <BarChart2 className="h-6 w-6 text-brand-700" />
@@ -106,7 +104,7 @@ const Index = () => {
                 AI-generated startup profiles with detailed analyses, risk assessments, and potential growth trajectories.
               </p>
             </div>
-            
+
             <div className="bg-gray-50 p-8 rounded-xl">
               <div className="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-5">
                 <Users className="h-6 w-6 text-brand-700" />
@@ -119,7 +117,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-      
+
       {/* How it works section */}
       <section id="how-it-works" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -129,7 +127,7 @@ const Index = () => {
               A simple process that creates value for both founders and investors
             </p>
           </div>
-          
+
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 gap-12">
               <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -164,7 +162,7 @@ const Index = () => {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="flex flex-col md:flex-row-reverse gap-8 items-center">
                 <div className="md:w-1/2">
                   <div className="relative">
@@ -197,7 +195,7 @@ const Index = () => {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="md:w-1/2">
                   <div className="relative">
@@ -234,7 +232,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Testimonials section */}
       <section id="testimonials" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -244,7 +242,7 @@ const Index = () => {
               Hear from founders and VCs who have found success with our platform
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-gray-50 p-8 rounded-xl">
               <div className="flex items-center mb-4">
@@ -265,7 +263,7 @@ const Index = () => {
                 "The AI feedback was incredibly insightful. It helped me identify gaps in my pitch that I hadn't considered, and within weeks of updating my profile, I had meetings with three VCs."
               </p>
             </div>
-            
+
             <div className="bg-gray-50 p-8 rounded-xl">
               <div className="flex items-center mb-4">
                 <div className="h-10 w-10 rounded-full bg-gray-300 mr-3"></div>
@@ -285,7 +283,7 @@ const Index = () => {
                 "This platform has completely transformed our deal sourcing process. The AI-enhanced profiles provide deeper insights than traditional pitch decks, and we've found two portfolio companies through the system."
               </p>
             </div>
-            
+
             <div className="bg-gray-50 p-8 rounded-xl">
               <div className="flex items-center mb-4">
                 <div className="h-10 w-10 rounded-full bg-gray-300 mr-3"></div>
@@ -308,7 +306,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-      
+
       {/* CTA section */}
       <section className="py-20 bg-brand-700">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -328,7 +326,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -365,7 +363,7 @@ const Index = () => {
               <h4 className="text-lg font-medium text-white mb-4">Contact</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="mailto:info@foundermatch.com" className="hover:text-white">info@foundermatch.com</a>
+                  <a href="mailto:info@EarlySignal.com" className="hover:text-white">info@EarlySignal.com</a>
                 </li>
                 <li>
                   <a href="tel:+15551234567" className="hover:text-white">+1 (555) 123-4567</a>
@@ -377,7 +375,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-            <p>&copy; 2025 FounderMatch. All rights reserved.</p>
+            <p>&copy; 2025 EarlySignal. All rights reserved.</p>
           </div>
         </div>
       </footer>
