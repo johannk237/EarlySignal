@@ -48,14 +48,14 @@
   }
 
   .dark {
-    /* More professional and refined dark theme */
-    --background: 222 47% 11%;
+    /* More refined dark theme with reduced white space */
+    --background: 225 25% 9%;
     --foreground: 210 40% 98%;
 
-    --card: 228 10% 10%;
+    --card: 228 20% 11%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 45% 11%;
+    --popover: 225 25% 12%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 217.2 91.2% 59.8%;
@@ -77,7 +77,7 @@
     --input: 217.2 32.6% 22.5%;
     --ring: 224.3 76.3% 48%;
 
-    --sidebar-background: 222 47% 11%;
+    --sidebar-background: 225 25% 9%;
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 217.2 91.2% 59.8%;
     --sidebar-primary-foreground: 222.2 47.4% 11.2%;
@@ -99,7 +99,7 @@
 
   /* Improved card styles for dark mode */
   .dark .card {
-    @apply shadow-md shadow-black/10 border-gray-800;
+    @apply shadow-md shadow-black/20 border-gray-800/60;
   }
 
   /* Enhanced button styles for dark mode */
@@ -113,9 +113,9 @@
     @apply bg-gradient-to-r from-red-500 via-yellow-500 to-green-500;
   }
 
-  /* Glass effect for dark mode */
+  /* More refined glass effect for dark mode */
   .dark .glass {
-    @apply backdrop-blur-xl bg-gray-900/70 border-gray-700/50;
+    @apply backdrop-blur-xl bg-gray-900/80 border-gray-700/50;
   }
 
   /* Text gradient for dark mode */
@@ -125,11 +125,36 @@
   
   /* Dark mode chat background */
   .dark .chat-background {
-    @apply bg-gray-900/80;
+    @apply bg-gray-900/90;
   }
   
   /* Card with reduced white space */
   .dark .reduced-white {
-    @apply bg-gray-900 border-gray-800;
+    @apply bg-gray-900/90 border-gray-800/60;
+  }
+  
+  /* Enhanced dark components with less visual noise */
+  .dark .dark-card {
+    @apply bg-gray-900/90 border-gray-800/60 shadow-lg shadow-black/20;
+  }
+  
+  .dark .dark-card-alt {
+    @apply bg-gray-800/90 border-gray-700/60;
+  }
+  
+  .dark .dark-input {
+    @apply bg-gray-800/50 border-gray-700/50;
+  }
+  
+  .dark .dark-header {
+    @apply bg-gray-900/95 border-gray-800/50 backdrop-blur-lg;
+  }
+  
+  .dark .dark-nav {
+    @apply bg-gray-800/30 text-gray-300 hover:bg-gray-700/40 hover:text-white;
+  }
+  
+  .dark .dark-divider {
+    @apply border-gray-800/70;
   }
 }

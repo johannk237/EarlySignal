@@ -36,7 +36,7 @@ const AIFeedbackPage = () => {
       
       <main className="container mx-auto px-4 py-8">
         <div className="mb-6">
-          <Button variant="outline" size="sm" asChild className="shadow-sm hover:shadow transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <Button variant="outline" size="sm" asChild className="shadow-sm hover:shadow transition-all dark:bg-gray-800/70 dark:border-gray-700/60 dark:hover:bg-gray-700/70">
             <a href="/founder-dashboard" className="flex items-center">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Dashboard
@@ -46,13 +46,13 @@ const AIFeedbackPage = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
-            <Card className="border-0 shadow-lg rounded-xl mb-6 overflow-hidden dark:bg-gray-900 dark:border-gray-800 dark:shadow-black/30">
-              <CardHeader className="bg-gradient-to-r from-brand-700 to-brand-800 text-white pb-4 dark:from-gray-800 dark:to-brand-900">
+            <Card className="border-0 shadow-lg rounded-xl mb-6 overflow-hidden dark:dark-card dark:shadow-black/30">
+              <CardHeader className="bg-gradient-to-r from-brand-700 to-brand-800 text-white pb-4 dark:from-gray-800 dark:to-brand-900/80">
                 <CardTitle className="text-xl flex items-center">
                   <Bot className="h-5 w-5 mr-2" />
                   AI Investor Feedback
                 </CardTitle>
-                <CardDescription className="text-white/80">
+                <CardDescription className="text-white/80 dark:text-gray-300/90">
                   Have a conversation with our AI to refine your pitch and generate your founder profile
                 </CardDescription>
               </CardHeader>
@@ -66,8 +66,8 @@ const AIFeedbackPage = () => {
           
           <div>
             <ScrollArea className="h-[100vh] pr-4 shadow-lg">
-              <Card className="border-0 shadow-lg rounded-xl mb-6 dark:bg-gray-900 dark:border-gray-800 dark:shadow-black/30">
-                <CardHeader className="pb-2 border-b bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 dark:border-gray-800">
+              <Card className="border-0 shadow-lg rounded-xl mb-6 dark:dark-card dark:shadow-black/30">
+                <CardHeader className="pb-2 border-b dark:dark-divider bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/80 dark:to-gray-900">
                   <CardTitle className="text-lg">How This Works</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-4">
@@ -123,8 +123,8 @@ const AIFeedbackPage = () => {
                 </CardContent>
               </Card>
               
-              <Card className={`border-0 shadow-lg rounded-xl ${isCompleted ? "bg-green-50 dark:bg-green-900/20" : ""} dark:bg-gray-900 dark:border-gray-800 dark:shadow-black/30`}>
-                <CardHeader className="pb-2 border-b bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 dark:border-gray-800">
+              <Card className={`border-0 shadow-lg rounded-xl ${isCompleted ? "bg-green-50 dark:bg-green-900/20" : ""} dark:dark-card dark:shadow-black/30`}>
+                <CardHeader className="pb-2 border-b dark:dark-divider bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/80 dark:to-gray-900">
                   <CardTitle className="text-lg">Profile Status</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-4">
@@ -140,7 +140,7 @@ const AIFeedbackPage = () => {
                     </div>
                   ) : isCompleted ? (
                     <div className="text-center py-6">
-                      <div className="bg-green-50 rounded-full w-20 h-20 mx-auto mb-4 flex items-center justify-center dark:bg-green-900/20">
+                      <div className="bg-green-50 rounded-full w-20 h-20 mx-auto mb-4 flex items-center justify-center dark:bg-green-900/30">
                         <CheckCircle className="h-10 w-10 text-green-600 dark:text-green-400" />
                       </div>
                       <h3 className="font-medium text-lg text-brand-800 dark:text-brand-300">Profile Generated!</h3>
@@ -157,7 +157,7 @@ const AIFeedbackPage = () => {
                     </div>
                   ) : (
                     <div className="py-6">
-                      <div className="flex items-center justify-center bg-amber-50 text-amber-800 rounded-lg p-4 mb-5 border border-amber-200 dark:bg-amber-900/20 dark:text-amber-300 dark:border-amber-800/30">
+                      <div className="flex items-center justify-center bg-amber-50 text-amber-800 rounded-lg p-4 mb-5 border border-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800/40">
                         <Bot className="h-5 w-5 mr-2" />
                         <span>Complete the AI conversation to generate your profile</span>
                       </div>

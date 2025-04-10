@@ -126,7 +126,7 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
     <div className="flex flex-col h-full">
       <AIChatHeader />
       
-      <ScrollArea className="flex-1 p-6 bg-gray-100 dark:bg-gray-900 chat-background">
+      <ScrollArea className="flex-1 p-6 bg-gray-100 dark:bg-gray-900/90 dark:chat-background">
         <div className="space-y-6">
           {messages.map((message) => (
             <AIMessage key={message.id} message={message} />
@@ -138,7 +138,7 @@ export function AIFeedbackChat({ onComplete }: AIFeedbackChatProps) {
         </div>
       </ScrollArea>
       
-      <div className="p-4 border-t bg-white dark:bg-gray-900 dark:border-gray-800">
+      <div className="p-4 border-t bg-white dark:bg-gray-900/95 dark:border-gray-800/60">
         <AIChatInput 
           onSendMessage={handleSendMessage}
           isLoading={isLoading}

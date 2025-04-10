@@ -115,7 +115,7 @@ const VCDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background dark:bg-gray-900">
       <Header userType="vc" />
       
       <main className="container mx-auto px-4 py-8">
@@ -127,18 +127,24 @@ const VCDashboard = () => {
           
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
             <Tabs defaultValue="all" className="mr-4">
-              <TabsList>
-                <TabsTrigger value="all">All Startups</TabsTrigger>
-                <TabsTrigger value="recommended">Recommended</TabsTrigger>
-                <TabsTrigger value="new">New</TabsTrigger>
+              <TabsList className="dark:bg-gray-800/70">
+                <TabsTrigger value="all" className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-300">
+                  All Startups
+                </TabsTrigger>
+                <TabsTrigger value="recommended" className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-300">
+                  Recommended
+                </TabsTrigger>
+                <TabsTrigger value="new" className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-300">
+                  New
+                </TabsTrigger>
               </TabsList>
             </Tabs>
             
-            <div className="flex border rounded-lg overflow-hidden">
+            <div className="flex border rounded-lg overflow-hidden dark:border-gray-700">
               <Button
                 variant={viewMode === "grid" ? "default" : "ghost"}
                 size="icon"
-                className={viewMode === "grid" ? "bg-brand-700 hover:bg-brand-800" : ""}
+                className={viewMode === "grid" ? "bg-brand-700 hover:bg-brand-800 dark:bg-brand-600 dark:hover:bg-brand-700" : "dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"}
                 onClick={() => setViewMode("grid")}
               >
                 <Grid className="h-4 w-4" />
@@ -146,7 +152,7 @@ const VCDashboard = () => {
               <Button
                 variant={viewMode === "list" ? "default" : "ghost"}
                 size="icon"
-                className={viewMode === "list" ? "bg-brand-700 hover:bg-brand-800" : ""}
+                className={viewMode === "list" ? "bg-brand-700 hover:bg-brand-800 dark:bg-brand-600 dark:hover:bg-brand-700" : "dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"}
                 onClick={() => setViewMode("list")}
               >
                 <List className="h-4 w-4" />
@@ -159,7 +165,7 @@ const VCDashboard = () => {
         
         {isLoading ? (
           <div className="flex justify-center items-center py-20">
-            <RefreshCw className="h-8 w-8 text-brand-600 animate-spin" />
+            <RefreshCw className="h-8 w-8 text-brand-600 dark:text-brand-400 animate-spin" />
           </div>
         ) : filteredStartups.length === 0 ? (
           <div className="text-center py-20">

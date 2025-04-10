@@ -69,29 +69,33 @@ const Favorites = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Header userType="vc" />
       
       <main className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Favorite Startups</h1>
-            <p className="text-gray-600">Manage and track your favorite startups</p>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Favorite Startups</h1>
+            <p className="text-gray-600 dark:text-gray-400">Manage and track your favorite startups</p>
           </div>
           
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
             <Tabs defaultValue="all" className="mr-4">
-              <TabsList>
-                <TabsTrigger value="all">All Favorites</TabsTrigger>
-                <TabsTrigger value="recent">Recently Added</TabsTrigger>
+              <TabsList className="dark:bg-gray-800/70">
+                <TabsTrigger value="all" className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-300">
+                  All Favorites
+                </TabsTrigger>
+                <TabsTrigger value="recent" className="dark:data-[state=active]:bg-gray-700 dark:data-[state=active]:text-white dark:text-gray-300">
+                  Recently Added
+                </TabsTrigger>
               </TabsList>
             </Tabs>
             
-            <div className="flex border rounded-lg overflow-hidden">
+            <div className="flex border rounded-lg overflow-hidden dark:border-gray-700">
               <Button
                 variant={viewMode === "grid" ? "default" : "ghost"}
                 size="icon"
-                className={viewMode === "grid" ? "bg-brand-700 hover:bg-brand-800" : ""}
+                className={viewMode === "grid" ? "bg-brand-700 hover:bg-brand-800 dark:bg-brand-600 dark:hover:bg-brand-700" : "dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"}
                 onClick={() => setViewMode("grid")}
               >
                 <Grid className="h-4 w-4" />
@@ -99,7 +103,7 @@ const Favorites = () => {
               <Button
                 variant={viewMode === "list" ? "default" : "ghost"}
                 size="icon"
-                className={viewMode === "list" ? "bg-brand-700 hover:bg-brand-800" : ""}
+                className={viewMode === "list" ? "bg-brand-700 hover:bg-brand-800 dark:bg-brand-600 dark:hover:bg-brand-700" : "dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"}
                 onClick={() => setViewMode("list")}
               >
                 <List className="h-4 w-4" />
@@ -115,8 +119,9 @@ const Favorites = () => {
               placeholder="Search favorites..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              className="dark:dark-input dark:text-gray-200"
             />
-            <Button type="submit" className="bg-brand-700 hover:bg-brand-800">
+            <Button type="submit" className="bg-brand-700 hover:bg-brand-800 dark:bg-brand-600 dark:hover:bg-brand-700">
               <Search className="h-4 w-4" />
             </Button>
           </form>
@@ -124,13 +129,13 @@ const Favorites = () => {
         
         {isLoading ? (
           <div className="flex justify-center items-center py-20">
-            <RefreshCw className="h-8 w-8 text-brand-600 animate-spin" />
+            <RefreshCw className="h-8 w-8 text-brand-600 dark:text-brand-400 animate-spin" />
           </div>
         ) : filteredStartups.length === 0 ? (
           <div className="text-center py-20">
-            <Star className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900">No favorites found</h3>
-            <p className="text-gray-600 mt-2">Try adjusting your search or add more startups to your favorites</p>
+            <Star className="h-12 w-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-gray-900 dark:text-gray-200">No favorites found</h3>
+            <p className="text-gray-600 dark:text-gray-400 mt-2">Try adjusting your search or add more startups to your favorites</p>
           </div>
         ) : (
           <div className={`grid ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"} gap-6`}>

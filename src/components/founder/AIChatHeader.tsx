@@ -7,7 +7,7 @@ import { Bot, Info } from "lucide-react";
 
 export function AIChatHeader() {
   return (
-    <div className="p-4 border-b bg-card flex items-center justify-between dark:border-gray-800 dark:bg-gray-900/90">
+    <div className="p-4 border-b bg-card flex items-center justify-between dark:border-gray-800/60 dark:bg-gray-900/90 dark:shadow-md dark:shadow-black/10">
       <div className="flex items-center">
         <Avatar className="h-9 w-9 mr-2 bg-brand-100 dark:bg-brand-900/50">
           <AvatarFallback className="bg-brand-100 text-brand-700 dark:bg-brand-900/50 dark:text-brand-300">
@@ -24,7 +24,7 @@ export function AIChatHeader() {
           <div className="w-2 h-2 rounded-full bg-green-500 mr-1 animate-pulse"></div>
           <span className="text-xs">Live</span>
         </Badge>
-        <Button variant="outline" size="sm" className="text-xs dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 dark:text-gray-200">
+        <Button variant="outline" size="sm" className="text-xs dark:bg-gray-800/80 dark:border-gray-700/60 dark:hover:bg-gray-700/70 dark:text-gray-200">
           <Info className="h-3 w-3 mr-1" />
           Help
         </Button>
