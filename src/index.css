@@ -48,13 +48,14 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    /* More professional and refined dark theme */
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 222 47% 11%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 222 45% 11%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 217.2 91.2% 59.8%;
@@ -66,23 +67,23 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 173 87% 31.4%;
+    --accent: 173 80% 40%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62.8% 40.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 217.2 32.6% 20.5%;
+    --input: 217.2 32.6% 22.5%;
+    --ring: 224.3 76.3% 48%;
 
-    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-background: 222 47% 11%;
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 217.2 91.2% 59.8%;
     --sidebar-primary-foreground: 222.2 47.4% 11.2%;
     --sidebar-accent: 217.2 32.6% 17.5%;
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-border: 217.2 32.6% 20.5%;
     --sidebar-ring: 212.7 26.8% 83.9%;
   }
 }
@@ -95,10 +96,30 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+
+  /* Improved card styles for dark mode */
+  .dark .card {
+    @apply shadow-md shadow-black/10 border-gray-800;
+  }
+
+  /* Enhanced button styles for dark mode */
+  .dark .button {
+    @apply shadow-sm shadow-black/20;
+  }
 }
 
 @layer utilities {
   .ai-score-gradient {
     @apply bg-gradient-to-r from-red-500 via-yellow-500 to-green-500;
+  }
+
+  /* Glass effect for dark mode */
+  .dark .glass {
+    @apply backdrop-blur-xl bg-gray-900/70 border-gray-700/50;
+  }
+
+  /* Text gradient for dark mode */
+  .dark .text-gradient {
+    @apply bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent;
   }
 }

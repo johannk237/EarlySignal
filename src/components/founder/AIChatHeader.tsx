@@ -9,8 +9,8 @@ export function AIChatHeader() {
   return (
     <div className="p-4 border-b bg-card flex items-center justify-between">
       <div className="flex items-center">
-        <Avatar className="h-9 w-9 mr-2 bg-brand-100">
-          <AvatarFallback className="bg-brand-100 text-brand-700">
+        <Avatar className="h-9 w-9 mr-2 bg-brand-100 dark:bg-brand-900/50">
+          <AvatarFallback className="bg-brand-100 text-brand-700 dark:bg-brand-900/50 dark:text-brand-300">
             <Bot className="h-5 w-5" />
           </AvatarFallback>
         </Avatar>
@@ -20,7 +20,7 @@ export function AIChatHeader() {
         </div>
       </div>
       <div className="flex items-center">
-        <Badge variant="outline" className="mr-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border-green-200 dark:border-green-800">
+        <Badge variant="outline" className="mr-2 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 border-green-200 dark:border-green-800/50">
           <div className="w-2 h-2 rounded-full bg-green-500 mr-1 animate-pulse"></div>
           <span className="text-xs">Live</span>
         </Badge>

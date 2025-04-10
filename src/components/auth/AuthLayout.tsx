@@ -34,7 +34,7 @@ export function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
             </p>
           )}
         </div>
-        <Card className="border-0 shadow-lg bg-card dark:bg-slate-800 dark:border-slate-700">
+        <Card className="border border-gray-200 shadow-xl bg-card dark:bg-slate-800/90 dark:border-slate-700/50 dark:shadow-lg dark:shadow-slate-900/30">
           <CardContent className="pt-6">
             {children}
           </CardContent>
