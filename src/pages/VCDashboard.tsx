@@ -115,14 +115,14 @@ const VCDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Header userType="vc" />
       
       <main className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Startup Marketplace</h1>
-            <p className="text-gray-600">Discover promising startups curated by our AI</p>
+            <h1 className="text-2xl font-bold text-foreground">Startup Marketplace</h1>
+            <p className="text-muted-foreground">Discover promising startups curated by our AI</p>
           </div>
           
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
@@ -163,8 +163,8 @@ const VCDashboard = () => {
           </div>
         ) : filteredStartups.length === 0 ? (
           <div className="text-center py-20">
-            <h3 className="text-lg font-medium text-gray-900">No startups found</h3>
-            <p className="text-gray-600 mt-2">Try adjusting your filters to find more results</p>
+            <h3 className="text-lg font-medium text-foreground">No startups found</h3>
+            <p className="text-muted-foreground mt-2">Try adjusting your filters to find more results</p>
           </div>
         ) : (
           <div className={`grid ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"} gap-6`}>

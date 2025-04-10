@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Bell, Settings, LogOut, Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { useTheme } from "@/components/theme/ThemeProvider";
 
 interface HeaderProps {
   userType: "vc" | "founder";
@@ -20,6 +22,7 @@ interface HeaderProps {
 export function Header({ userType }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   const handleLogout = () => {
     // Placeholder for logout logic
@@ -27,12 +30,16 @@ export function Header({ userType }: HeaderProps) {
   };
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-30">
+    <header className="bg-background border-b border-border sticky top-0 z-30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center">
             <Link to={userType === "vc" ? "/vc-dashboard" : "/founder-dashboard"} className="flex items-center">
-              <img src="/logo_black.png" alt="Logo" className="h-10 w-50 mr-2" />
+              <img 
+                src={theme === "dark" ? "/logo_white.png" : "/logo_black.png"} 
+                alt="Logo" 
+                className="h-10 w-50 mr-2" 
+              />
             </Link>
           </div>
 
@@ -42,19 +49,19 @@ export function Header({ userType }: HeaderProps) {
               <>
                 <Link
                   to="/vc-dashboard"
-                  className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-foreground hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Dashboard
                 </Link>
                 <Link
                   to="/favorites"
-                  className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-foreground hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Favorites
                 </Link>
                 <Link
                   to="/settings"
-                  className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-foreground hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Settings
                 </Link>
@@ -65,19 +72,19 @@ export function Header({ userType }: HeaderProps) {
               <>
                 <Link
                   to="/founder-dashboard"
-                  className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-foreground hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Dashboard
                 </Link>
                 <Link
                   to="/profile"
-                  className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-foreground hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   My Profile
                 </Link>
                 <Link
                   to="/ai-feedback"
-                  className="text-gray-700 hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-foreground hover:text-brand-700 px-3 py-2 rounded-md text-sm font-medium"
                 >
                   AI Feedback
                 </Link>
@@ -86,6 +93,7 @@ export function Header({ userType }: HeaderProps) {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
+            <ThemeToggle />
             <Button variant="ghost" size="icon" aria-label="Notifications">
               <Bell className="h-5 w-5" />
             </Button>
@@ -115,12 +123,14 @@ export function Header({ userType }: HeaderProps) {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center">
+            <ThemeToggle />
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Menu"
+              className="ml-2"
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -130,27 +140,27 @@ export function Header({ userType }: HeaderProps) {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 py-2">
+        <div className="md:hidden bg-background border-t border-border py-2">
           <div className="space-y-1 px-4">
             {userType === "vc" && (
               <>
                 <Link
                   to="/vc-dashboard"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Dashboard
                 </Link>
                 <Link
                   to="/favorites"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Favorites
                 </Link>
                 <Link
                   to="/settings"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Settings
@@ -162,21 +172,21 @@ export function Header({ userType }: HeaderProps) {
               <>
                 <Link
                   to="/founder-dashboard"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Dashboard
                 </Link>
                 <Link
                   to="/profile"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   My Profile
                 </Link>
                 <Link
                   to="/ai-feedback"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   AI Feedback
@@ -184,7 +194,7 @@ export function Header({ userType }: HeaderProps) {
               </>
             )}
 
-            <div className="pt-4 pb-3 border-t border-gray-200">
+            <div className="pt-4 pb-3 border-t border-border">
               <div className="flex items-center px-3">
                 <div className="flex-shrink-0">
                   <Avatar className="h-10 w-10">
@@ -193,10 +203,10 @@ export function Header({ userType }: HeaderProps) {
                   </Avatar>
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium text-gray-800">
+                  <div className="text-base font-medium text-foreground">
                     {userType === "vc" ? "VC User" : "Founder User"}
                   </div>
-                  <div className="text-sm font-medium text-gray-500">
+                  <div className="text-sm font-medium text-muted-foreground">
                     user@example.com
                   </div>
                 </div>
@@ -206,7 +216,7 @@ export function Header({ userType }: HeaderProps) {
               </div>
               <div className="mt-3 space-y-1 px-2">
                 <button
-                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     navigate("/settings");
@@ -215,7 +225,7 @@ export function Header({ userType }: HeaderProps) {
                   Settings
                 </button>
                 <button
-                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-foreground hover:bg-secondary"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     handleLogout();
