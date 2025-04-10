@@ -66,7 +66,7 @@ const Index = () => {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/signup?type=vc">
-                <Button size="lg" className="bg-brand-700 hover:bg-brand-800 w-full sm:w-auto">
+                <Button size="lg" className="bg-brand-700 hover:bg-brand-800 w-full sm:w-auto dark:text-white">
                   Join as Investor
                   <ChevronRight className="h-4 w-4 ml-2" />
                 </Button>
