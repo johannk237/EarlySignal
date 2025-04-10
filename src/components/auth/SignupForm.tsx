@@ -128,8 +128,8 @@ export function SignupForm() {
         </form>
         <div className="text-center text-sm">
           Already have an account?{" "}
-          <Link to="/login" className="font-medium text-brand-600 hover:text-brand-800">
-            Sign in
+          <Link to="/login">
+            <span className="font-medium text-brand-600 hover:text-brand-800">Sign in</span>
           </Link>
         </div>
       </TabsContent>

@@ -94,10 +94,9 @@ export function LoginForm() {
 
           <div className="text-center text-sm">
             Don't have an account?{" "}
-            <Link to="/signup" className="font-medium text-brand-600 hover:text-brand-800">
-              Sign up
+            <Link to="/signup">
+              <span className="font-medium text-brand-600 hover:text-brand-800">Sign up</span>
             </Link>
-
           </div>
         </form>
       </TabsContent>
