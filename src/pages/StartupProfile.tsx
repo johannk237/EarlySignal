@@ -89,7 +89,7 @@ const StartupProfile = () => {
   
   if (!startup) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:from-gray-900 dark:to-gray-800">
         <Header userType="vc" />
         <main className="container mx-auto px-4 py-8">
           <div className="text-center py-20">
@@ -105,10 +105,10 @@ const StartupProfile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:from-gray-900 dark:to-gray-800">
       <Header userType="vc" />
       
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 dark:bg-gray-900 dark:text-white">
         <div className="mb-6">
           <Button variant="outline" size="sm" asChild>
             <Link to="/vc-dashboard" className="flex items-center">
@@ -118,8 +118,8 @@ const StartupProfile = () => {
           </Button>
         </div>
         
-        <div className="bg-white rounded-lg shadow-sm border overflow-hidden mb-6">
-          <div className="bg-gradient-to-r from-brand-700 to-brand-800 h-32 relative">
+        <div className="bg-white rounded-lg shadow-sm border overflow-hidden mb-6 dark:bg-gray-600">
+          <div className="bg-gradient-to-r from-brand-700 to-brand-800 h-32 relative dark:from-gray-900 dark:to-gray-800">
             <div className="absolute bottom-0 left-0 w-full transform translate-y-1/2 px-6">
               <div className="flex items-end">
                 <div className="w-24 h-24 bg-white rounded-lg shadow-md flex items-center justify-center">
@@ -168,9 +168,9 @@ const StartupProfile = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 ">
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-sm border overflow-hidden mb-6">
+            <div className="bg-white rounded-lg shadow-sm border overflow-hidden mb-6 dark:bg-gray-600">
               <Tabs defaultValue="overview" onValueChange={setActiveTab}>
                 <div className="px-6 pt-6">
                   <TabsList className="w-full grid grid-cols-4">
@@ -182,10 +182,10 @@ const StartupProfile = () => {
                 </div>
                 
                 <TabsContent value="overview" className="p-6 focus:outline-none">
-                  <div className="space-y-6">
+                  <div className="space-y-6 ">
                     <div>
                       <h3 className="text-lg font-semibold mb-2">Description</h3>
-                      <p className="text-gray-700">
+                      <p className="text-gray-700 dark:text-gray-200">
                         {startup.description}
                       </p>
                     </div>
@@ -193,14 +193,14 @@ const StartupProfile = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <h3 className="text-lg font-semibold mb-2">Problem</h3>
-                        <p className="text-gray-700">
+                        <p className="text-gray-700 dark:text-gray-200">
                           {startup.problem}
                         </p>
                       </div>
                       
                       <div>
                         <h3 className="text-lg font-semibold mb-2">Solution</h3>
-                        <p className="text-gray-700">
+                        <p className="text-gray-700 dark:text-gray-200">
                           {startup.solution}
                         </p>
                       </div>
@@ -208,21 +208,21 @@ const StartupProfile = () => {
                     
                     <div>
                       <h3 className="text-lg font-semibold mb-2">Market Opportunity</h3>
-                      <p className="text-gray-700">
+                      <p className="text-gray-700 dark:text-gray-200">
                         {startup.market}
                       </p>
                     </div>
                     
                     <div>
                       <h3 className="text-lg font-semibold mb-2">Traction & Milestones</h3>
-                      <p className="text-gray-700">
+                      <p className="text-gray-700 dark:text-gray-200">
                         {startup.traction}
                       </p>
                     </div>
                     
                     <div>
                       <h3 className="text-lg font-semibold mb-2">Business Model</h3>
-                      <p className="text-gray-700">
+                      <p className="text-gray-700 dark:text-gray-200">
                         {startup.businessModel}
                       </p>
                     </div>
@@ -240,7 +240,7 @@ const StartupProfile = () => {
                   </div>
                 </TabsContent>
                 
-                <TabsContent value="team" className="p-6 focus:outline-none">
+                <TabsContent value="team" className="p-6 focus:outline-none ">
                   <h3 className="text-lg font-semibold mb-4">Team Members</h3>
                   <div className="space-y-6">
                     {startup.teamMembers.map((member, index) => (
@@ -252,8 +252,9 @@ const StartupProfile = () => {
                         </div>
                         <div>
                           <h4 className="font-medium text-gray-900">{member.name}</h4>
-                          <p className="text-gray-600 text-sm">{member.role}</p>
-                          <p className="text-gray-500 text-sm mt-1">{member.background}</p>
+                      
+                          <p className="text-gray-600 text-sm dark:text-gray-200">{member.role}</p>
+                          <p className="text-gray-500 text-sm mt-1 dark:text-gray-200">{member.background}</p>
                         </div>
                       </div>
                     ))}
@@ -264,18 +265,18 @@ const StartupProfile = () => {
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-lg font-semibold mb-2">AI Analysis Summary</h3>
-                      <p className="text-gray-700 mb-4">
+                      <p className="text-gray-700 mb-4 dark:text-gray-200">
                         Our AI has analyzed this startup based on their pitch, answers to investor questions, market data, and team profiles.
                       </p>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="border rounded-lg p-4">
                           <h4 className="font-medium text-gray-900 mb-3">Strengths</h4>
-                          <ul className="space-y-2">
+                          <ul className="space-y-2 ">
                             {startup.aiInsights.strengths.map((strength, index) => (
                               <li key={index} className="flex items-start">
                                 <div className="text-green-600 mt-0.5 mr-2">•</div>
-                                <span className="text-gray-700">{strength}</span>
+                                <span className="text-gray-700 dark:text-gray-200">{strength}</span>
                               </li>
                             ))}
                           </ul>
@@ -287,7 +288,7 @@ const StartupProfile = () => {
                             {startup.aiInsights.weaknesses.map((weakness, index) => (
                               <li key={index} className="flex items-start">
                                 <div className="text-red-600 mt-0.5 mr-2">•</div>
-                                <span className="text-gray-700">{weakness}</span>
+                                <span className="text-gray-700 dark:text-gray-200">{weakness}</span>
                               </li>
                             ))}
                           </ul>
@@ -299,7 +300,7 @@ const StartupProfile = () => {
                             {startup.aiInsights.opportunities.map((opportunity, index) => (
                               <li key={index} className="flex items-start">
                                 <div className="text-blue-600 mt-0.5 mr-2">•</div>
-                                <span className="text-gray-700">{opportunity}</span>
+                                <span className="text-gray-700 dark:text-gray-200">{opportunity}</span>
                               </li>
                             ))}
                           </ul>
@@ -311,7 +312,7 @@ const StartupProfile = () => {
                             {startup.aiInsights.threats.map((threat, index) => (
                               <li key={index} className="flex items-start">
                                 <div className="text-amber-600 mt-0.5 mr-2">•</div>
-                                <span className="text-gray-700">{threat}</span>
+                                <span className="text-gray-700 dark:text-gray-200">{threat}</span>
                               </li>
                             ))}
                           </ul>
@@ -326,7 +327,7 @@ const StartupProfile = () => {
                     <div className="flex items-center justify-between">
                       <div>
                         <h3 className="text-lg font-semibold">AI-Founder Conversation</h3>
-                        <p className="text-gray-600 text-sm">Key excerpts from the interactive Q&A session</p>
+                        <p className="text-gray-600 text-sm dark:text-gray-200">Key excerpts from the interactive Q&A session</p>
                       </div>
                       <Button variant="outline" size="sm">
                         <PlayCircle className="h-4 w-4 mr-2" />
@@ -343,12 +344,12 @@ const StartupProfile = () => {
                             </div>
                             <div>
                               <p className="font-medium text-gray-900">Question:</p>
-                              <p className="text-gray-700">{item.question}</p>
+                              <p className="text-gray-700 dark:text-gray-400">{item.question}</p>
                             </div>
                           </div>
                           
                           <div className="flex items-start pl-11">
-                            <p className="text-gray-700">{item.answer}</p>
+                            <p className="text-gray-700 dark:text-gray-200">{item.answer}</p>
                           </div>
                         </div>
                       ))}
@@ -360,18 +361,18 @@ const StartupProfile = () => {
           </div>
           
           <div>
-            <div className="bg-white rounded-lg shadow-sm border overflow-hidden mb-6">
+            <div className="bg-white rounded-lg shadow-sm border overflow-hidden mb-6 dark:bg-gray-600">
               <div className="p-6">
                 <h3 className="text-lg font-semibold mb-4">AI Score</h3>
                 <div className="flex flex-col items-center">
                   <div className="w-32 h-32 rounded-full border-8 border-green-100 flex items-center justify-center mb-4">
                     <span className="text-4xl font-bold text-green-600">{startup.aiScore}</span>
                   </div>
-                  <p className="text-gray-700 text-center mb-4">
+                  <p className="text-gray-700 text-center mb-4 dark:text-gray-200">
                     Based on our AI analysis, this startup scores in the <span className="font-medium text-green-600">top 10%</span> of companies in this sector.
                   </p>
                   
-                  <div className="w-full space-y-4">
+                  <div className="w-full space-y-4 ">
                     <div>
                       <div className="flex justify-between mb-1 text-sm">
                         <span>Team Strength</span>
@@ -408,22 +409,22 @@ const StartupProfile = () => {
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow-sm border overflow-hidden mb-6">
+            <div className="bg-white rounded-lg shadow-sm border overflow-hidden mb-6 dark:bg-gray-600">
               <div className="p-6">
                 <h3 className="text-lg font-semibold mb-4">Company Info</h3>
                 <div className="space-y-4">
                   <div className="flex items-center">
                     <Calendar className="h-5 w-5 text-gray-500 mr-3" />
                     <div>
-                      <p className="text-sm text-gray-600">Founded</p>
-                      <p className="font-medium">{startup.founded}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-900">Founded</p>
+                      <p className="font-medium ">{startup.founded}</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center">
                     <MapPin className="h-5 w-5 text-gray-500 mr-3" />
                     <div>
-                      <p className="text-sm text-gray-600">Location</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-900">Location</p>
                       <p className="font-medium">{startup.location}</p>
                     </div>
                   </div>
@@ -431,7 +432,7 @@ const StartupProfile = () => {
                   <div className="flex items-center">
                     <Users className="h-5 w-5 text-gray-500 mr-3" />
                     <div>
-                      <p className="text-sm text-gray-600">Team Size</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-900">Team Size</p>
                       <p className="font-medium">{startup.teamSize} employees</p>
                     </div>
                   </div>
@@ -439,7 +440,7 @@ const StartupProfile = () => {
                   <div className="flex items-center">
                     <Building className="h-5 w-5 text-gray-500 mr-3" />
                     <div>
-                      <p className="text-sm text-gray-600">Stage</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-900">Stage</p>
                       <p className="font-medium">{startup.stage}</p>
                     </div>
                   </div>
@@ -449,7 +450,7 @@ const StartupProfile = () => {
                   <div className="flex items-center">
                     <Globe className="h-5 w-5 text-gray-500 mr-3" />
                     <div className="overflow-hidden">
-                      <p className="text-sm text-gray-600">Website</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-900">Website</p>
                       <a 
                         href={startup.website} 
                         target="_blank" 
@@ -465,7 +466,7 @@ const StartupProfile = () => {
                   <div className="flex items-center">
                     <Mail className="h-5 w-5 text-gray-500 mr-3" />
                     <div className="overflow-hidden">
-                      <p className="text-sm text-gray-600">Contact</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-900">Contact</p>
                       <a 
                         href={`mailto:${startup.contactEmail}`} 
                         className="font-medium text-brand-700 hover:text-brand-800 truncate"

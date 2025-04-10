@@ -44,12 +44,12 @@ export function AISuggestedResponses({ messageCount, onSelectSuggestion }: AISug
   
   return (
     <div className="mt-4">
-      <p className="text-xs text-gray-500 mb-2">Suggested responses:</p>
+      <p className="text-xs text-gray-500 mb-2 dark:text-white">Suggested responses:</p>
       <div className="flex flex-wrap gap-2">
         <Button
           variant="outline"
           size="sm"
-          className="text-xs bg-gray-50 hover:bg-gray-100"
+          className="text-xs bg-gray-50 hover:bg-gray-100 dark:bg-gray-600"
           onClick={() => onSelectSuggestion(getFullSuggestion(0))}
         >
           <ChevronRight className="h-3 w-3 mr-1" />
@@ -58,7 +58,7 @@ export function AISuggestedResponses({ messageCount, onSelectSuggestion }: AISug
         <Button
           variant="outline"
           size="sm"
-          className="text-xs bg-gray-50 hover:bg-gray-100"
+          className="text-xs bg-gray-50 hover:bg-gray-100 dark:bg-gray-600"
           onClick={() => onSelectSuggestion(getFullSuggestion(1))}
         >
           <ChevronRight className="h-3 w-3 mr-1" />

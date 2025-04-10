@@ -69,13 +69,13 @@ const Settings = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Header userType="vc" />
       
       <main className="container mx-auto px-4 py-8">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
-          <p className="text-gray-600">Manage your account and preferences</p>
+        <div className="mb-6 ">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-300/90">Settings</h1>
+          <p className="text-gray-600 dark:text-gray-300/90">Manage your account and preferences</p>
         </div>
         
         <Card className="border-0 shadow-md overflow-hidden">

@@ -57,7 +57,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
   };
 
   return (
-    <div className="bg-white border rounded-lg shadow-sm mb-6">
+    <div className="bg-white border rounded-lg shadow-sm mb-6 dark:bg-gray-700">
       <div className="p-4">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="relative flex-grow">

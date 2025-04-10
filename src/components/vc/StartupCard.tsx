@@ -131,7 +131,7 @@ export function StartupCard({
         </div>
       </CardContent>
       
-      <CardFooter className="px-6 py-4 bg-gray-50 border-t flex justify-between">
+      <CardFooter className="px-6 py-4 bg-gray-50 border-t flex justify-between dark:bg-gray-600">
         <Button variant="outline" size="sm" className="text-gray-700">
           <BookOpen className="h-4 w-4 mr-2" />
           Quick View

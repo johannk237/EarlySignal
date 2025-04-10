@@ -45,7 +45,7 @@ export function AIChatInput({ onSendMessage, isLoading }: AIChatInputProps) {
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder="Type your message..."
-        className="flex-1 min-h-[80px] resize-none bg-gray-100 rounded-lg border-gray-200 focus:border-brand-400 focus:ring focus:ring-brand-100"
+        className="flex-1 min-h-[80px] resize-none bg-gray-100 dark:bg-gray-600 rounded-lg border-gray-200 focus:border-brand-400 focus:ring focus:ring-brand-100"
         disabled={isLoading}
       />
       <div className="ml-3 flex flex-col space-y-2">
@@ -53,7 +53,7 @@ export function AIChatInput({ onSendMessage, isLoading }: AIChatInputProps) {
           variant="outline"
           size="icon"
           onClick={toggleRecording}
-          className={`rounded-full h-10 w-10 ${isRecording ? "bg-red-50 text-red-500 border-red-200" : "bg-gray-50"}`}
+          className={`rounded-full h-10 w-10 ${isRecording ? "bg-red-50 text-red-500 border-red-200" : "bg-gray-50 dark:bg-gray-600"}`}
           disabled={isLoading}
         >
           {isRecording ? (
