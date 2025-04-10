@@ -19,7 +19,7 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center">
-              <img src="/public/logo.png" alt="Logo" className="h-10 w-50 mr-2" />
+              <img src="/logo.png" alt="Logo" className="h-10 w-50 mr-2" />
             </div>
 
             <nav className="hidden md:flex items-center space-x-4">
