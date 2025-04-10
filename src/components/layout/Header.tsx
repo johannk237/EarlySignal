@@ -32,7 +32,7 @@ export function Header({ userType }: HeaderProps) {
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center">
             <Link to={userType === "vc" ? "/vc-dashboard" : "/founder-dashboard"} className="flex items-center">
-              <img src="/logo.png" alt="Logo" className="h-10 w-50 mr-2" />
+              <img src="/logo_black.png" alt="Logo" className="h-10 w-50 mr-2" />
             </Link>
           </div>
 
