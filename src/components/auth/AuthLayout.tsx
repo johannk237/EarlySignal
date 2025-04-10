@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -10,20 +11,23 @@ interface AuthLayoutProps {
 
 export function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900 px-4 py-12">
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
       <div className="w-full max-w-md space-y-8 animate-fade-in">
         <div className="text-center">
-        <img src="/logo.png" alt="Logo" className="h-20 w-50 mr-2" />
-          <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900">
+          <img src="/logo.png" alt="Logo" className="h-20 w-50 mr-2 mx-auto" />
+          <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
             {title}
           </h2>
           {subtitle && (
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               {subtitle}
             </p>
           )}
         </div>
-        <Card className="border-0 shadow-lg">
+        <Card className="border-0 shadow-lg dark:bg-slate-800 dark:border-slate-700">
           <CardContent className="pt-6">
             {children}
           </CardContent>
