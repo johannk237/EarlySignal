@@ -22,10 +22,10 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center">
-              <img 
-                src={theme === "dark" ? "/logo_white.png" : "/logo_black.png"} 
-                alt="Logo" 
-                className="h-10 w-50 mr-2" 
+              <img
+                src={theme === "dark" ? "/logo_white.png" : "/logo_black.png"}
+                alt="Logo"
+                className="h-10 w-50 mr-2"
               />
             </div>
 
@@ -340,10 +340,12 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-xl font-bold text-white mb-4">
-                Founder<span className="text-brand-400">Match</span>
-              </h3>
-              <p className="mb-4">
+              <img
+                src="/logo_white.png"
+                alt="Logo"
+                className="h-10 w-50 mr-2"
+              />
+              <p className="mt-4 mb-4">
                 Transforming the way founders and investors connect through the power of AI.
               </p>
             </div>
