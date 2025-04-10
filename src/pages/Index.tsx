@@ -65,13 +65,13 @@ const Index = () => {
               Our AI-driven platform streamlines the venture capital deal-sourcing process, helping founders refine their pitches and VCs discover high-potential startups.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/signup?type=vc">
+              <Link to="/signup">
                 <Button size="lg" className="bg-brand-700 hover:bg-brand-800 w-full sm:w-auto dark:text-white">
                   Join as Investor
                   <ChevronRight className="h-4 w-4 ml-2" />
                 </Button>
               </Link>
-              <Link to="/signup?type=founder">
+              <Link to="/signup">
                 <Button size="lg" variant="outline" className="w-full sm:w-auto">
                   Join as Founder
                   <ChevronRight className="h-4 w-4 ml-2" />
