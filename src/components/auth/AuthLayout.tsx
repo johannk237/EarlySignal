@@ -14,7 +14,7 @@ export function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
   const { theme } = useTheme();
   
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background dark:bg-slate-900 px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-background dark:bg-gray-900 px-4 py-12">
       <div className="absolute top-4 right-4">
         <ThemeToggle />
       </div>
@@ -34,7 +34,7 @@ export function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
             </p>
           )}
         </div>
-        <Card className="border border-gray-200 shadow-xl bg-card dark:bg-slate-800/90 dark:border-slate-700/50 dark:shadow-lg dark:shadow-slate-900/30">
+        <Card className="border border-gray-200 shadow-xl bg-card dark:bg-gray-900 dark:border-gray-800/50 dark:shadow-lg dark:shadow-black/30">
           <CardContent className="pt-6">
             {children}
           </CardContent>

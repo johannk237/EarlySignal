@@ -52,7 +52,7 @@
     --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 11%;
+    --card: 228 10% 10%;
     --card-foreground: 210 40% 98%;
 
     --popover: 222 45% 11%;
@@ -121,5 +121,15 @@
   /* Text gradient for dark mode */
   .dark .text-gradient {
     @apply bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent;
+  }
+  
+  /* Dark mode chat background */
+  .dark .chat-background {
+    @apply bg-gray-900/80;
+  }
+  
+  /* Card with reduced white space */
+  .dark .reduced-white {
+    @apply bg-gray-900 border-gray-800;
   }
 }
